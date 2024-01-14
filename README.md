@@ -4,7 +4,7 @@
 
 ## To run the game locally
 
-1. Clone the repo at `https://www.github.com/nhhoang-tony/tictactoe`  
+1. Clone the repo `git clone https://github.com/nhhoang-tony/tic-tac-toe.git`  
 
 2. Ensure you have Node installed on your system  
 
