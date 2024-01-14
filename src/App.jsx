@@ -105,7 +105,7 @@ function App() {
     <main>
       <header className='text-center'>
         <img
-          src='public/game-logo.png'
+          src='/static/img/game-logo.png'
           className='w-40 object-cover mt-12 mb-4 mx-auto'
         ></img>
         <h1 className='text-[#3c4c20] text-6xl font-[fantasy] mt-0 mb-12 mx-auto'>
