@@ -13,7 +13,7 @@ body {
       rgba(241, 160, 101, 0.98),
       rgba(232, 149, 65, 0.87)
     ),
-    url('game-logo-pattern.png');
+    url('/static/img/game-logo-pattern.png');
   background-repeat: repeat;
   background-size: 100% 100%, 30% 30%, 100% 100%;
   min-height: 100vh;
