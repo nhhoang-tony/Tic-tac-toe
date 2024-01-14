@@ -6,8 +6,11 @@ export default {
     screens: {
       xxs: '440px',
       xs: '550px',
-      sm: '640px'
+      sm: '640px',
     },
+  },
+  future: {
+    hoverOnlyWhenSupported: true,
   },
   plugins: [],
 };
