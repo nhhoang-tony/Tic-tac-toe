@@ -4,7 +4,10 @@ export default function GameOver({ winner, onRestart }) {
   return (
     <div className='absolute opacity-95 top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-[#0d1706] animation'>
       <h2 className='font-[fantasy] text-7xl text-center text-[#f9e96e] m-0'>
-        Game Over!
+        <img
+          src='/static/img/game-over.svg'
+          className='w-[28rem] m-0 p-8'
+        ></img>
       </h2>
       {winner && (
         <p className='text-4xl text-center text-white'>{winner} has won!</p>

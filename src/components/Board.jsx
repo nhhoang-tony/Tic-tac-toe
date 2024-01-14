@@ -7,11 +7,22 @@ function Board({ onSelectSquare, board }) {
             {row.map((playerSymbol, colIndex) => (
               <div
                 key={colIndex}
-                className='w-20 h-20 xxs:w-24 xxs:h-24 xs:w-32 xs:h-32 border-none bg-[#a49e79] text-[#0d1706] text-[2.6rem] xxs:text-[3.4rem] xs:text-[5rem] text-center cursor-pointer font-[fantasy] p-4'
+                className='flex flex-col justify-center items-center w-20 h-20 xxs:w-24 xxs:h-24 xs:w-32 xs:h-32 border-none bg-[#a49e79] text-[#0d1706] text-[2.6rem] xxs:text-[3.4rem] xs:text-[5rem] text-center cursor-pointer font-[fantasy] p-4'
                 onClick={() => onSelectSquare(rowIndex, colIndex)}
                 disabled={playerSymbol !== null}
               >
-                {playerSymbol}
+                {playerSymbol === 'O' && (
+                  <img
+                    src='/static/img/o-black.svg'
+                    className='w-3/4 h-3/4 object-contain'
+                  ></img>
+                )}
+                {playerSymbol === 'X' && (
+                  <img
+                    src='/static/img/x-black.svg'
+                    className='w-3/4 h-3/4 object-contain'
+                  ></img>
+                )}
               </div>
             ))}
           </div>

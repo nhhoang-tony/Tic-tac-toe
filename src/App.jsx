@@ -108,9 +108,10 @@ function App() {
           src='/static/img/game-logo.png'
           className='w-40 object-cover mt-12 mb-4 mx-auto'
         ></img>
-        <h1 className='text-[#3c4c20] text-6xl font-[fantasy] mt-0 mb-12 mx-auto'>
-          Tic tac toe
-        </h1>
+        <img
+          src='/static/img/header.svg'
+          className='w-96 object-cover mt-12 mb-4 mx-auto'
+        ></img>
       </header>
       <div className='max-w-[95%] sm:w-[95%] sm:max-w-[45rem] my-12 mx-auto py-8 px-4 sm:px-8 rounded-lg bg-[#202b0a] shadow-[0_0_20px_rgba(0,0,0,0.5)] relative text-center'>
         <div className='flex flex-wrap justify-evenly items-center gap-8 p-0 sm:my-4 mx-0'>

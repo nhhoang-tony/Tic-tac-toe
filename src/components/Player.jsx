@@ -30,7 +30,7 @@ export default function Player({
           : 'border-solid border-[2px] border-transparent'
       }`}
     >
-      <span className='border-solid border-[2px] border-transparent p-2 rounded font-bold'>
+      <span className='flex border-solid border-[2px] border-transparent p-2 rounded font-bold'>
         {isEditing && (
           <input
             className='text-base w-32 border-none p-2 bg-[#0d1706] text-center'
@@ -46,8 +46,13 @@ export default function Player({
             {playerName}
           </span>
         )}
-        <span className='ml-4 text-base text-white font-[fantasy]'>
-          {symbol}
+        <span className='flex flex-col justify-center ml-4 p-2'>
+          {symbol === 'O' && (
+            <img src='/static/img/o.svg' className='w-4 object-cover'></img>
+          )}
+          {symbol === 'X' && (
+            <img src='/static/img/x.svg' className='w-4 object-cover'></img>
+          )}
         </span>
       </span>
       <button
