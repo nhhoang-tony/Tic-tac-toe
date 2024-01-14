@@ -11,18 +11,18 @@ function Board({ onSelectSquare, board }) {
                 onClick={() => onSelectSquare(rowIndex, colIndex)}
                 disabled={playerSymbol !== null}
               >
-                {playerSymbol === 'O' && (
-                  <img
-                    src='/static/img/o-black.svg'
-                    className='w-3/4 h-3/4 object-contain'
-                  ></img>
-                )}
-                {playerSymbol === 'X' && (
-                  <img
-                    src='/static/img/x-black.svg'
-                    className='w-3/4 h-3/4 object-contain'
-                  ></img>
-                )}
+                <img
+                  src='/static/img/o-black.svg'
+                  className={`${
+                    playerSymbol === 'O' ? 'visible' : 'hidden'
+                  } w-3/4 h-3/4 object-contain`}
+                ></img>
+                <img
+                  src='/static/img/x-black.svg'
+                  className={`${
+                    playerSymbol === 'X' ? 'visible' : 'hidden'
+                  } w-3/4 h-3/4 object-contain`}
+                ></img>
               </div>
             ))}
           </div>
