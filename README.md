@@ -6,7 +6,7 @@
 
 1. Clone the repo `git clone https://github.com/nhhoang-tony/tic-tac-toe.git`  
 
-2. Ensure you have Node installed on your system  
+2. Ensure you have Node installed on your system. If not, follow this guide to install `https://nodejs.org/en/download`  
 
 3. Run `npm install` to install the project dependencies.  
 
