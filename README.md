@@ -1,6 +1,6 @@
 # <a href="https://tictactoe.tonynguyen61.com" target="_blank" rel="noopener noreferrer">Play</a>
 
-# Play the well known game of tic tac toe against AI
+# Play the well known game of tic tac toe against AI. The game's AI is written using Minimax algorithm.
 
 ## To run the game locally
 

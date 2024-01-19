@@ -191,7 +191,7 @@ function App() {
       >
         <h2 className='text-lg sm:text-xl text-center'>Loading AI...</h2>
       </Modal>
-      <div className='max-w-[95%] sm:w-[95%] sm:max-w-[45rem] my-8 mx-auto py-8 px-4 sm:px-8 rounded-lg bg-[#202b0a] shadow-[0_0_20px_rgba(0,0,0,0.5)] relative text-center'>
+      <div className='max-w-[95%] sm:w-[95%] sm:max-w-[45rem] my-8 mx-auto py-8 px-4 sm:px-8 rounded-lg bg-[#12160c] shadow-[0_0_20px_rgba(0,0,0,0.5)] relative text-center'>
         <div className='flex flex-wrap justify-evenly items-center gap-8 p-0 sm:my-4 mx-0'>
           <Player
             initialName={PLAYERS.X}
