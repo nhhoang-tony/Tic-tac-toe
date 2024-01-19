@@ -4,7 +4,7 @@
 
 ## To run the game locally
 
-1. Clone the repo `git clone https://github.com/nhhoang-tony/tic-tac-toe.git`  
+1. Clone the repo `git clone https://github.com/nhhoang-tony/Tic-tac-toe-AI.git`  
 
 2. Ensure you have Node installed on your system. If not, follow this guide to install `https://nodejs.org/en/download`  
 
