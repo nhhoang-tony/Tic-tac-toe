@@ -1,6 +1,6 @@
 # <a href="https://tictactoe.tonynguyen61.com" target="_blank" rel="noopener noreferrer">Play</a>
 
-# A well known game of tic tac toe
+# Play the well known game of tic tac toe against AI
 
 ## To run the game locally
 
