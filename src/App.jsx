@@ -103,6 +103,14 @@ function App() {
 
       return newGamePlay;
     });
+
+    if (gamePlay.mode === availableGameModes.ai) {
+      console.log('reset loading ai');
+      setLoadingAI(true);
+      setTimeout(() => {
+        setLoadingAI(false);
+      }, 1000);
+    }
   }
 
   // player change name
@@ -152,7 +160,6 @@ function App() {
       setTimeout(() => {
         const aiMove = getAiMove(gameBoard);
         handleSelectSquare(aiMove[0], aiMove[1]);
-        aiHasMoved.current = false;
       }, 100);
     } else if (
       gamePlay.playerTurn === X &&
@@ -162,7 +169,6 @@ function App() {
       setTimeout(() => {
         const aiMove = getAiMove(gameBoard);
         handleSelectSquare(aiMove[0], aiMove[1]);
-        aiHasMoved.current = false;
       }, 100);
     }
   }, [gameBoard, gamePlay]);
