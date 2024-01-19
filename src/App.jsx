@@ -165,25 +165,19 @@ function App() {
       }, 100);
     }
   }, [gameBoard, gamePlay]);
-  gameBoard.every((element, index) => {
-    console.log('element ', element, index);
-  });
 
   return (
     <main>
-      {gamePlay.playerTurn === 'X' &&
-        gamePlay.mode === availableGameModes.ai && (
-          <header className='text-center'>
-            <img
-              src='/static/img/game-logo.png'
-              className='w-40 object-cover mt-4 mb-4 mx-auto'
-            ></img>
-            <img
-              src='/static/img/header.svg'
-              className='w-96 max-w-[80%] object-cover mt-4 mb-4 mx-auto'
-            ></img>
-          </header>
-        )}
+      <header className='text-center'>
+        <img
+          src='/static/img/game-logo.png'
+          className='w-40 object-cover mt-4 mb-4 mx-auto'
+        ></img>
+        <img
+          src='/static/img/header.svg'
+          className='w-96 max-w-[80%] object-cover mt-4 mb-4 mx-auto'
+        ></img>
+      </header>
       <div className='max-w-[95%] sm:w-[95%] sm:max-w-[45rem] my-8 mx-auto py-8 px-4 sm:px-8 rounded-lg bg-[#202b0a] shadow-[0_0_20px_rgba(0,0,0,0.5)] relative text-center'>
         <div className='flex flex-wrap justify-evenly items-center gap-8 p-0 sm:my-4 mx-0'>
           <Player
