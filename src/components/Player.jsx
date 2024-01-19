@@ -4,8 +4,10 @@ export default function Player({
   initialName,
   symbol,
   currentTurn,
+  isAi,
   onChangeName,
 }) {
+  const aiName = 'AI';
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -41,7 +43,12 @@ export default function Player({
             required
           ></input>
         )}
-        {!isEditing && (
+        {!isEditing && isAi && (
+          <span className='inline-block w-32 text-base text-white m-0 p-2 rounded text-center text-ellipsis'>
+            {aiName}
+          </span>
+        )}
+        {!isEditing && !isAi && (
           <span className='inline-block w-32 text-base text-white m-0 p-2 rounded text-center text-ellipsis'>
             {playerName}
           </span>
@@ -58,7 +65,7 @@ export default function Player({
       <button
         className='w-12 border-none bg-none text-[#f1a065fa] text-base cursor-pointer p-1 text-center transition-colors ease duration-200 hover:text-[#e89541de]'
         onClick={handleEdit}
-        disabled={!playerName}
+        disabled={!playerName || isAi}
       >
         {isEditing ? 'Save' : 'Edit'}
       </button>
