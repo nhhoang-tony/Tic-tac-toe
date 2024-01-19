@@ -1,9 +1,10 @@
 import Player from './components/Player';
 import Board from './components/Board';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { WIN_COMBOS } from '../win-combos';
 import GameOver from './components/GameOver';
 import { getAiMove, deepCopy, terminal } from './util/AI';
+import Modal from './UI/Modal';
 
 const PLAYERS = {
   X: 'Player 1',
@@ -52,6 +53,7 @@ function App() {
 
   const [players, setPlayers] = useState(PLAYERS);
   const [gameBoard, setGameBoard] = useState(deepCopy(INITIAL_GAME_BOARD));
+  const [loadingAI, setLoadingAI] = useState(false);
   const [gamePlay, setGamePlay] = useState({
     mode: availableGameModes.multi,
     playerTurn: X,
@@ -59,7 +61,6 @@ function App() {
 
   const winner = getWinner(gameBoard, players);
   const hasDraw = terminal(gameBoard);
-  const aiHasMoved = useRef(false);
 
   // player makes a move
   function handleSelectSquare(rowIndex, colIndex) {
@@ -129,6 +130,10 @@ function App() {
     if (mode === availableGameModes.ai) {
       handlePlayerNameChange(X, 'AI');
       handlePlayerNameChange(O, 'Player 2');
+      setLoadingAI(true);
+      setTimeout(() => {
+        setLoadingAI(false);
+      }, 1000);
     } else if (mode === availableGameModes.player) {
       handlePlayerNameChange(X, 'Player 1');
       handlePlayerNameChange(O, 'AI');
@@ -139,10 +144,6 @@ function App() {
 
   // AI move
   useEffect(() => {
-    if (aiHasMoved.current) {
-      return;
-    }
-
     if (
       gamePlay.playerTurn === O &&
       !terminal(gameBoard) &&
@@ -178,6 +179,12 @@ function App() {
           className='w-96 max-w-[80%] object-cover mt-4 mb-4 mx-auto'
         ></img>
       </header>
+      <Modal
+        className='bg-[#f1a065fa] rounded border-none p-4 w-[45%] max-w-[45rem] backdrop:bg-black backdrop:opacity-40'
+        open={loadingAI}
+      >
+        <h2 className='text-lg sm:text-xl text-center'>Loading AI...</h2>
+      </Modal>
       <div className='max-w-[95%] sm:w-[95%] sm:max-w-[45rem] my-8 mx-auto py-8 px-4 sm:px-8 rounded-lg bg-[#202b0a] shadow-[0_0_20px_rgba(0,0,0,0.5)] relative text-center'>
         <div className='flex flex-wrap justify-evenly items-center gap-8 p-0 sm:my-4 mx-0'>
           <Player
