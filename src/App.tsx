@@ -4,15 +4,14 @@ import { useEffect, useState } from 'react';
 import { WIN_COMBOS } from '../win-combos';
 import GameOver from './components/GameOver';
 import { getAiMove, deepCopy, terminal } from './util/AI';
-import Modal from './UI/Modal';
 
 const PLAYERS = {
   X: 'Player 1',
   O: 'Player 2',
 };
 
-const X = 'X';
-const O = 'O';
+const X: string = 'X';
+const O: string = 'O';
 
 const INITIAL_GAME_BOARD = [
   [null, null, null],
@@ -105,7 +104,6 @@ function App() {
     });
 
     if (gamePlay.mode === availableGameModes.ai) {
-      console.log('reset loading ai');
       setLoadingAI(true);
       setTimeout(() => {
         setLoadingAI(false);
@@ -138,17 +136,19 @@ function App() {
     if (mode === availableGameModes.ai) {
       handlePlayerNameChange(X, 'AI');
       handlePlayerNameChange(O, 'Player 2');
-      setLoadingAI(true);
-      setTimeout(() => {
-        setLoadingAI(false);
-      }, 1000);
     } else if (mode === availableGameModes.player) {
       handlePlayerNameChange(X, 'Player 1');
       handlePlayerNameChange(O, 'AI');
+    } else {
+      handlePlayerNameChange(X, 'Player 1');
+      handlePlayerNameChange(O, 'Player 2');
     }
-
-    handleRestart();
   }
+
+  // restart game after mode changed
+  useEffect(() => {
+    handleRestart();
+  }, [gamePlay.mode]);
 
   // AI move
   useEffect(() => {
@@ -171,7 +171,7 @@ function App() {
         handleSelectSquare(aiMove[0], aiMove[1]);
       }, 100);
     }
-  }, [gameBoard, gamePlay]);
+  }, [gameBoard, gamePlay.playerTurn]);
 
   return (
     <main>
@@ -185,23 +185,27 @@ function App() {
           className='w-96 max-w-[80%] object-cover mt-4 mb-4 mx-auto'
         ></img>
       </header>
-      <Modal
-        className='bg-[#f1a065fa] rounded border-none p-4 w-[45%] max-w-[45rem] backdrop:bg-black backdrop:opacity-40'
-        open={loadingAI}
-      >
-        <h2 className='text-lg sm:text-xl text-center'>Loading AI...</h2>
-      </Modal>
+      {loadingAI && (
+        <div className='z-10 fixed top-0 left-0 w-full h-full flex flex-col justify-center items-center'>
+          <div className='fixed w-full h-screen bg-[#0f0e18] opacity-40 z-0'></div>
+          <div className='absolute z-10 bg-[#f1a065fa] rounded border-none p-4 w-[45%] max-w-[45rem] backdrop:bg-black backdrop:opacity-40'>
+            <h2 className='text-lg sm:text-xl text-center text-black'>
+              Loading AI...
+            </h2>
+          </div>
+        </div>
+      )}
       <div className='max-w-[95%] sm:w-[95%] sm:max-w-[45rem] my-8 mx-auto py-8 px-4 sm:px-8 rounded-lg bg-[#12160c] shadow-[0_0_20px_rgba(0,0,0,0.5)] relative text-center'>
         <div className='flex flex-wrap justify-evenly items-center gap-8 p-0 sm:my-4 mx-0'>
           <Player
-            initialName={PLAYERS.X}
+            initialName={players.X}
             symbol={X}
             currentTurn={gamePlay.playerTurn === X}
             isAi={gamePlay.mode === availableGameModes.ai}
             onChangeName={handlePlayerNameChange}
           ></Player>
           <Player
-            initialName={PLAYERS.O}
+            initialName={players.O}
             symbol={O}
             currentTurn={gamePlay.playerTurn === O}
             isAi={gamePlay.mode === availableGameModes.player}

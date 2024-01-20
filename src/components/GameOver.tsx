@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function GameOver({ winner, onRestart }) {
   const restartButtonClasses =
     'block my-12 mx-auto text-2xl bg-none border-solid border-2 border-[#f9e96e] text-[#f9e96e] py-2 px-4 cursor-pointer transition-all ease duration-200 shadow-[0_0_8px_rgba(255,187,0,0.4)] hover:bg-[#f1a065fa] hover:text-[#0d1706] hover:scale-110 hover:shadow-[0_0_20px_rgba(255,187,0,0.8)]';

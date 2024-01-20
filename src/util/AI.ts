@@ -1,7 +1,7 @@
 import { WIN_COMBOS } from '../../win-combos';
 
-const X = 'X';
-const O = 'O';
+const X: String = 'X';
+const O: String = 'O';
 
 // get the best move
 export function getAiMove(gameBoard) {
@@ -12,10 +12,10 @@ export function getAiMove(gameBoard) {
 // get the current player turn assuming X always goes first
 function player(board) {
   const boardCopy = deepCopy(board);
-  let xCount = 0;
-  let oCount = 0;
-  for (const [rowIndex, rowValue] of boardCopy.entries()) {
-    for (const [colIndex, colValue] of rowValue.entries()) {
+  let xCount: number = 0;
+  let oCount: number = 0;
+  for (const rowValue of boardCopy) {
+    for (const colValue of rowValue) {
       if (colValue === X) {
         xCount++;
       }
@@ -35,7 +35,7 @@ function player(board) {
 // get all available moves/actions for a current board state
 function actions(board) {
   const boardCopy = deepCopy(board);
-  const actions = [];
+  const actions: number[][] = [];
 
   for (const [rowIndex, rowValue] of boardCopy.entries()) {
     for (const [colIndex, colValue] of rowValue.entries()) {
@@ -62,7 +62,7 @@ function result(board, action) {
 // check if any player wins
 export function winner(board) {
   const boardCopy = deepCopy(board);
-  let winner = null;
+  let winner: string = '';
 
   for (const combo of WIN_COMBOS) {
     const firstSquare = boardCopy[combo[0].row][combo[0].column];
@@ -84,12 +84,12 @@ export function winner(board) {
 // if there's no winner and no available square, game ends
 export function terminal(board) {
   const boardCopy = deepCopy(board);
-  if (winner(boardCopy) !== null) {
+  if (winner(boardCopy) !== '') {
     return true;
   } else {
-    let emptyCount = 0;
-    for (const [rowIndex, rowValue] of boardCopy.entries()) {
-      for (const [colIndex, colValue] of rowValue.entries()) {
+    let emptyCount: number = 0;
+    for (const rowValue of boardCopy) {
+      for (const colValue of rowValue) {
         if (colValue !== X && colValue !== O) {
           emptyCount++;
           break;
@@ -124,7 +124,7 @@ function maxValue(board) {
     return utility(boardCopy);
   }
 
-  let currentValue = -Infinity;
+  let currentValue: number = -Infinity;
   for (const action of actions(boardCopy)) {
     currentValue = Math.max(currentValue, minValue(result(boardCopy, action)));
   }
@@ -139,7 +139,7 @@ function minValue(board) {
     return utility(boardCopy);
   }
 
-  let currentValue = Infinity;
+  let currentValue: number = Infinity;
   for (const action of actions(boardCopy)) {
     currentValue = Math.min(currentValue, maxValue(result(boardCopy, action)));
   }
@@ -151,7 +151,7 @@ function minValue(board) {
 function minimax(board) {
   const boardCopy = deepCopy(board);
   const currentPlayer = player(boardCopy);
-  let bestmove;
+  let bestmove: number[] = [];
 
   if (currentPlayer === X) {
     let currentValue = -Infinity;
@@ -181,7 +181,7 @@ function minimax(board) {
 // deep copy variables in JavaScript
 export function deepCopy(original) {
   if (Array.isArray(original)) {
-    const copy = [];
+    const copy: any[] = [];
     for (const [index, value] of original.entries()) {
       copy[index] = deepCopy(value);
     }
